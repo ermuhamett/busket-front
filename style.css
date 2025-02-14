@@ -1,0 +1,60 @@
+.bucket-grid-container {
+    width: 1100px; /* Ограничиваем ширину контейнера */
+    margin: 0 auto; /* Центрируем контейнер */
+    overflow: auto; /* Добавляем прокрутку, если содержимое превышает ширину контейнера */
+}
+
+.bucket-grid {
+    display: grid;
+    grid-template-columns: repeat(20, 50px); /* 20 columns, each 50px wide */
+    grid-gap: 0; /* Убираем промежутки между ковшами */
+    justify-items: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.bucket-container {
+    text-align: center;
+}
+
+.bucket {
+    width: 50px;
+    height: 50px;
+}
+
+.bucket-id {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.control-buttons {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+button {
+    padding: 10px;
+    font-size: 14px;
+}
+
+.active {
+    stroke: red;
+    stroke-width: 2;
+}
+
+/* Определяем градиенты для цветов */
+.red-gradient {
+    fill: url(#red-gradient);
+}
+
+.yellow-gradient {
+    fill: url(#yellow-gradient);
+}
+
+.blue-gradient {
+    fill: url(#blue-gradient);
+}
+
+.green-gradient {
+    fill: url(#green-gradient);
+}
