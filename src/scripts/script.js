@@ -9,12 +9,11 @@ function createBucket(id, svgTemplate) {
     let svgClone = svgTemplate.clone();
     svgClone.attr('id', `bucket-${id}`);
     svgClone.addClass('bucket'); // Добавляем класс bucket
-    svgClone.find('path').addClass(getRandomColorClass()); // Устанавливаем начальный цвет
 
     // Удаляем inline-стиль и устанавливаем класс с градиентом
-    let pathElement = svgClone.find('path');
-    pathElement.removeAttr('style')
-               .addClass(getRandomColorClass()); // Применяем градиентный цвет
+    let pathElements = svgClone.find('.bucket-fill');
+    pathElements.removeAttr('style')
+                .addClass(getRandomColorClass()); // Применяем градиентный цвет
                
     // Создаем контейнер для SVG и номера
     let bucketContainer = $('<div class="bucket-container"></div>');
@@ -49,17 +48,37 @@ function getRandomColorClass() {
     return colors[Math.floor(Math.random() * colors.length)];
 }
 
+function updateGradientColors() {
+    const gradients = [
+        { id: 'red-gradient', colors: ['#ff0000', '#f3ebeb', '#ff0000'] },
+        { id: 'yellow-gradient', colors: ['#ffff00', '#ffffcc', '#ffff00'] },
+        { id: 'blue-gradient', colors: ['#0000ff', '#ccccff', '#0000ff'] },
+        { id: 'green-gradient', colors: ['#00ff00', '#ccffcc', '#00ff00'] }
+    ];
+
+    gradients.forEach(gradient => {
+        const stops = $(`#${gradient.id} stop`);
+        stops.eq(0).css('stop-color', gradient.colors[0]);
+        stops.eq(1).css('stop-color', gradient.colors[1]);
+        stops.eq(2).css('stop-color', gradient.colors[2]);
+    });
+}
+
 // Динамическая отрисовка ковшей
 $(document).ready(function() {
-    generateBuckets('#bucket-grid-1', 20, 101, 'bucket.svg'); // 20 ковшей, начиная с 101
-    generateBuckets('#bucket-grid-2', 20, 201, 'bucket.svg'); // 20 ковшей, начиная с 201
+    let standartBucket = "./svg/bucket.svg";
+    let redBucket = "./svg/red_bucket.svg";
+    let superBucket = "./svg/bucket2.svg";
+    generateBuckets('#bucket-grid-1', 20, 101, standartBucket); // 20 ковшей, начиная с 101
+    generateBuckets('#bucket-grid-2', 20, 201, superBucket); // 20 ковшей, начиная с 201
 
     // Смена цвета ковшей по нажатию кнопки
     $('#set-color').on('click', function() {
-        $('.bucket path').each(function() {
+        $('.bucket .bucket-fill').each(function() {
             $(this).removeAttr('style'); // удаляем inline-стиль
             let randomColorClass = getRandomColorClass(); // Получаем случайный цвет
-            $(this).attr('class', randomColorClass); // Устанавливаем новый цвет
+            $(this).attr('class', `bucket-fill ${randomColorClass}`); // Устанавливаем новый цвет
         });
+        updateGradientColors(); // Обновляем цвета градиентов
     });
 });

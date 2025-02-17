@@ -7,7 +7,7 @@
 .bucket-grid {
     display: grid;
     grid-template-columns: repeat(20, 50px); /* 20 columns, each 50px wide */
-    grid-gap: 0; /* Убираем промежутки между ковшами */
+    grid-gap: 5px; /* Убираем промежутки между ковшами */
     justify-items: center;
     align-items: center;
     padding: 20px;
