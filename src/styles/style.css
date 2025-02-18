@@ -14,47 +14,62 @@
 }
 
 .bucket-container {
+    /* Размещаем подпись и спаннер внутри */
+    position: relative;
     text-align: center;
+    width: 50px; 
+    height: 70px; /* чуть больше, чтобы влезла подпись */
 }
 
-.bucket {
+/* Место для ковша */
+.bucket-svg {
     width: 50px;
     height: 50px;
 }
 
+/* Размер самого ковша (SVG) */
+.bucket {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+/* При клике — визуальное выделение (обводка) */
+.bucket.active {
+    outline: 2px solid red;
+    outline-offset: -2px; /* чтобы обводка вплотную к краю */
+}
+
+/* Подпись (номер ковша) — делаем более жирной */
 .bucket-id {
-    text-align: center;
     margin-top: 5px;
+    font-size: 12px;
+    font-weight: bold; /* жирный шрифт */
 }
 
-.control-buttons {
-    margin-bottom: 20px;
-    text-align: center;
+/* Спаннер накладываем в пределах контейнера */
+.spanner-overlay {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none; /* чтобы клики проходили к ковшу */
+    
+    /* Зададим размер, чтобы он не выходил за границы ковша */
+    width: 33px;
+    height: 33px;
+    
+    /* Центрируем внутри 50×50 ковша */
+    top: calc(50% - 20px);
+    left: calc(50% - 16px);
 }
 
+/* Подсветка контейнера при наложенном спаннере */
+.bucket-container.overlayed .bucket-svg {
+    opacity: 0.5; /* Прозрачность ковша */
+}
+
+/* Стили для кнопок */
 button {
     padding: 10px;
     font-size: 14px;
-}
-
-.active {
-    stroke: red;
-    stroke-width: 2;
-}
-
-/* Определяем градиенты для цветов */
-.red-gradient {
-    fill: url(#red-gradient);
-}
-
-.yellow-gradient {
-    fill: url(#yellow-gradient);
-}
-
-.blue-gradient {
-    fill: url(#blue-gradient);
-}
-
-.green-gradient {
-    fill: url(#green-gradient);
+    margin-top: 20px;
 }
