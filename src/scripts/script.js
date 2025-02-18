@@ -1,84 +1,81 @@
+// Массив с путями к SVG-файлам
+const svgFiles = [
+    "./svg/blue_bucket.svg",
+    "./svg/yellow_bucket.svg",
+    "./svg/empty_bucket.svg",
+    "./svg/red_bucket.svg",
+    "./svg/green_bucket.svg",
+    "./svg/no_bucket.svg",
+];
+
+// Функция для загрузки SVG по URL
 function loadSVG(url, callback) {
     $.get(url, function(data) {
+        // Из загруженных данных находим элемент <svg>
         let svg = $(data).find('svg');
         callback(svg);
     });
 }
 
-function createBucket(id, svgTemplate) {
-    let svgClone = svgTemplate.clone();
-    svgClone.attr('id', `bucket-${id}`);
-    svgClone.addClass('bucket'); // Добавляем класс bucket
-
-    // Удаляем inline-стиль и устанавливаем класс с градиентом
-    let pathElements = svgClone.find('.bucket-fill');
-    pathElements.removeAttr('style')
-                .addClass(getRandomColorClass()); // Применяем градиентный цвет
-               
-    // Создаем контейнер для SVG и номера
+// Функция, создающая контейнер для ковша с заданным номером
+// В контейнере сразу появляется статическая подпись, а SVG вставится позже
+function createBucketContainer(id) {
+    // Создаем контейнер для SVG и подписи (номер ковша)
     let bucketContainer = $('<div class="bucket-container"></div>');
-    bucketContainer.append(svgClone);
-    bucketContainer.append(`<div class="bucket-id">${id}</div>`); // Добавляем номер ковша
-
-    return bucketContainer;
+    // Добавляем пустой элемент, куда потом вставим SVG
+    let svgPlaceholder = $('<div class="bucket-svg"></div>');
+    bucketContainer.append(svgPlaceholder);
+    // Добавляем подпись с номером
+    bucketContainer.append(`<div class="bucket-id">${id}</div>`);
+    return { bucketContainer, svgPlaceholder };
 }
 
-function generateBuckets(containerId, bucketCount, startId, svgUrl) {
-    loadSVG(svgUrl, function(svgTemplate) {
-        let container = $(containerId);
-        for (let i = 0; i < bucketCount; i++) {
-            let bucket = createBucket(startId + i, svgTemplate);
-            container.append(bucket);
-        }
+// Функция генерации ковшей
+// containerId  - селектор контейнера, куда будут добавляться ковши
+// bucketCount  - сколько ковшей создать
+// startId      - начальный номер (например, 101 или 201)
+function generateBuckets(containerId, bucketCount, startId) {
+    let container = $(containerId);
 
-        // Добавляем обработчик клика для каждого ковша
-        $('.bucket').on('click', function() {
-            $(this).toggleClass('active'); // Добавляем/удаляем класс активности
+    for (let i = 0; i < bucketCount; i++) {
+        let bucketNumber = startId + i;
+        // Создаем контейнер с подписью (номерация статична)
+        let { bucketContainer, svgPlaceholder } = createBucketContainer(bucketNumber);
+        // Добавляем контейнер сразу, чтобы нумерация была в нужном порядке
+        container.append(bucketContainer);
+
+        // Выбираем случайный SVG из массива
+        let randomIndex = Math.floor(Math.random() * svgFiles.length);
+        let svgUrl = svgFiles[randomIndex];
+
+        // Загружаем SVG и вставляем в созданный placeholder
+        loadSVG(svgUrl, function(svgTemplate) {
+            let svgClone = svgTemplate.clone();
+            svgClone.attr('id', `bucket-${bucketNumber}`);
+            svgClone.addClass('bucket'); // Для стилизации и обработки кликов
+            // Удаляем inline-стили, если они есть
+            svgClone.find('.bucket-fill').removeAttr('style');
+            svgPlaceholder.append(svgClone);
         });
+    }
+
+    // Обработчик клика для переключения класса "active" у каждого SVG-ковша
+    container.on('click', '.bucket', function() {
+        $(this).toggleClass('active');
     });
 }
 
-function getRandomColorClass() {
-    const colors = [
-        'red-gradient',
-        'yellow-gradient',
-        'blue-gradient',
-        'green-gradient'
-    ];
-    return colors[Math.floor(Math.random() * colors.length)];
-}
-
-function updateGradientColors() {
-    const gradients = [
-        { id: 'red-gradient', colors: ['#ff0000', '#f3ebeb', '#ff0000'] },
-        { id: 'yellow-gradient', colors: ['#ffff00', '#ffffcc', '#ffff00'] },
-        { id: 'blue-gradient', colors: ['#0000ff', '#ccccff', '#0000ff'] },
-        { id: 'green-gradient', colors: ['#00ff00', '#ccffcc', '#00ff00'] }
-    ];
-
-    gradients.forEach(gradient => {
-        const stops = $(`#${gradient.id} stop`);
-        stops.eq(0).css('stop-color', gradient.colors[0]);
-        stops.eq(1).css('stop-color', gradient.colors[1]);
-        stops.eq(2).css('stop-color', gradient.colors[2]);
-    });
-}
-
-// Динамическая отрисовка ковшей
+// Инициализация после загрузки документа
 $(document).ready(function() {
-    let standartBucket = "./svg/bucket.svg";
-    let redBucket = "./svg/red_bucket.svg";
-    let superBucket = "./svg/bucket2.svg";
-    generateBuckets('#bucket-grid-1', 20, 101, standartBucket); // 20 ковшей, начиная с 101
-    generateBuckets('#bucket-grid-2', 20, 201, superBucket); // 20 ковшей, начиная с 201
+    // Генерируем 20 ковшей с нумерацией от 101 до 120 в контейнере #bucket-grid-1
+    generateBuckets('#bucket-grid-1', 20, 101);
+    // Генерируем 20 ковшей с нумерацией от 201 до 220 в контейнере #bucket-grid-2
+    generateBuckets('#bucket-grid-2', 20, 201);
 
-    // Смена цвета ковшей по нажатию кнопки
+    // Пример обработчика для кнопки, который переключает класс "active" для всех SVG-ковшей
     $('#set-color').on('click', function() {
-        $('.bucket .bucket-fill').each(function() {
-            $(this).removeAttr('style'); // удаляем inline-стиль
-            let randomColorClass = getRandomColorClass(); // Получаем случайный цвет
-            $(this).attr('class', `bucket-fill ${randomColorClass}`); // Устанавливаем новый цвет
+        $('.bucket').each(function() {
+            $(this).toggleClass('active');
         });
-        updateGradientColors(); // Обновляем цвета градиентов
     });
 });

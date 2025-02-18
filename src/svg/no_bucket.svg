@@ -5,31 +5,24 @@
     Created with Fabric.js 3.6.6
   </desc>
   <defs/>
-  <g transform="matrix(1 0 0 1 34.07 152.5)">
-    <line style="stroke: rgb(0,0,0); stroke-width: 2; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 0.3;" x1="0" y1="0" x2="0" y2="0"/>
+  <g transform="matrix(1 0 0 1 76.11 89.07)">
+    <linearGradient id="SVGID_SVGID_51_5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 109.96 204.08)" x1="0" y1="63.265306122448976" x2="126.12244897959182" y2="63.265306122448976">
+      <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity: 1"/>
+      <stop offset="74.043%" style="stop-color:rgb(255,255,255);stop-opacity: 1"/>
+    </linearGradient>
+    <path style="stroke: rgb(0,0,0); stroke-width: 3; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: url(#SVGID_SVGID_51_5); fill-rule: nonzero; opacity: 0.2;" transform=" translate(-173.02, -267.35)" d="M 130.77550771285075 330.204081632653 L 122.20407914142218 322.85714285714283 L 109.95918118223851 206.93877551020407 L 110.77550771285075 204.48979591836732 L 236.08163016183033 204.0816326530612 L 222.61224240672829 323.2653061224489 L 215.26530363121807 330.61224489795916 L 130.77550771285075 330.204081632653" stroke-linecap="round"/>
   </g>
-  <g transform="matrix(1 0 0 1 75.38 77.12)">
-    <g style="">
-      <g transform="matrix(0.23 0 0 0.24 -64.05 -26.48)">
-        <polygon style="stroke: rgb(0,0,0); stroke-width: 4; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: rgb(52,52,48); fill-rule: nonzero; opacity: 0.3;" points="-50,-50 -50,50 50,50 50,-50 "/>
-      </g>
-      <g transform="matrix(0.23 0 0 0.24 64.04 -26.83)">
-        <polygon style="stroke: rgb(0,0,0); stroke-width: 4; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(52,52,48); fill-rule: nonzero; opacity: 0.3;" points="-50,-50 -50,50 50,50 50,-50 "/>
-      </g>
-      <g transform="matrix(1 0 0 1 0.73 11.95)">
-        <linearGradient id="SVGID_746" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 109.96 204.08)" x1="0" y1="63.265306122448976" x2="126.12244897959182" y2="63.265306122448976">
-          <stop offset="0%" style="stop-color:rgba(255, 255, 255, 1);"/>
-          <stop offset="74.043%" style="stop-color:rgba(255, 255, 255, 1);"/>
-        </linearGradient>
-        <path style="stroke: rgb(0,0,0); stroke-width: 3; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: url(#SVGID_746); fill-rule: nonzero; opacity: 0.3;" transform=" translate(-173.02, -267.35)" d="M 130.77550771285075 330.204081632653 L 122.20407914142218 322.85714285714283 L 109.95918118223851 206.93877551020407 L 110.77550771285075 204.48979591836732 L 236.08163016183033 204.0816326530612 L 222.61224240672829 323.2653061224489 L 215.26530363121807 330.61224489795916 L 130.77550771285075 330.204081632653" stroke-linecap="round"/>
-      </g>
-      <g transform="matrix(1.32 0 0 0.24 0 -63.22)">
-        <linearGradient id="SVGID_2201" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -50 -50)" x1="0" y1="50" x2="100" y2="50">
-          <stop offset="42.483%" style="stop-color:rgba(255, 255, 255, 1);"/>
-          <stop offset="100%" style="stop-color:rgba(255, 255, 255, 1);"/>
-        </linearGradient>
-        <polygon style="stroke: rgb(0,0,0); stroke-width: 3; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: url(#SVGID_2201); fill-rule: nonzero; opacity: 0.3;" vector-effect="non-scaling-stroke" points="-50,-50 -50,50 50,50 50,-50 "/>
-      </g>
-    </g>
+  <g transform="matrix(1.32 0 0 0.24 75.38 13.9)">
+    <linearGradient id="SVGID_SVGID_52_6" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -50 -50)" x1="0" y1="50" x2="100" y2="50">
+      <stop offset="42.483%" style="stop-color:rgb(255,255,255);stop-opacity: 1"/>
+      <stop offset="100%" style="stop-color:rgb(255,255,255);stop-opacity: 1"/>
+    </linearGradient>
+    <polygon style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: url(#SVGID_SVGID_52_6); fill-rule: nonzero; opacity: 0.2;" vector-effect="non-scaling-stroke" points="-50,-50 -50,50 50,50 50,-50 "/>
+  </g>
+  <g transform="matrix(0.93 0 0 0.98 141.95 49.9)">
+    <path style="stroke: rgb(0,0,0); stroke-width: 3; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 0.2;" transform=" translate(-142.81, -49.93)" d="M 138.9847494553377 37.76727069452899 L 151.30646255526275 37.76727069452899 L 151.30646255526275 62.088774603159 L 134.32109622966414 62.088774603159 L 138.9847494553377 37.76727069452899" stroke-linecap="round"/>
+  </g>
+  <g transform="matrix(-0.93 0 0 0.98 9.11 50.09)">
+    <path style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 0.2;" vector-effect="non-scaling-stroke" transform=" translate(-142.81, -49.93)" d="M 138.9847494553377 37.76727069452899 L 151.30646255526275 37.76727069452899 L 151.30646255526275 62.088774603159 L 134.32109622966414 62.088774603159 L 138.9847494553377 37.76727069452899" stroke-linecap="round"/>
   </g>
 </svg>
