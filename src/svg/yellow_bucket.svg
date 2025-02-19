@@ -19,7 +19,7 @@
           <stop offset="31.751%" style="stop-color:rgb(243,235,235);stop-opacity: 1"/>
           <stop offset="84.174%" style="stop-color:rgb(255,255,0);stop-opacity: 1"/>
         </linearGradient>
-        <path style="stroke: rgb(0,0,0); stroke-width: 3; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: url(#SVGID_SVGID_39_13); fill-rule: nonzero; opacity: 1;" transform=" translate(-173.02, -267.35)" d="M 130.77550771285075 330.204081632653 L 122.20407914142218 322.85714285714283 L 109.95918118223851 206.93877551020407 L 110.77550771285075 204.48979591836732 L 236.08163016183033 204.0816326530612 L 222.61224240672829 323.2653061224489 L 215.26530363121807 330.61224489795916 L 130.77550771285075 330.204081632653" stroke-linecap="round"/>
+        <path style="stroke: rgb(0,0,0); stroke-width: 6; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: url(#SVGID_SVGID_39_13); fill-rule: nonzero; opacity: 1;" transform=" translate(-173.02, -267.35)" d="M 130.77550771285075 330.204081632653 L 122.20407914142218 322.85714285714283 L 109.95918118223851 206.93877551020407 L 110.77550771285075 204.48979591836732 L 236.08163016183033 204.0816326530612 L 222.61224240672829 323.2653061224489 L 215.26530363121807 330.61224489795916 L 130.77550771285075 330.204081632653" stroke-linecap="round"/>
       </g>
       <g transform="matrix(1.32 0 0 0.24 0 -63.22)">
         <linearGradient id="SVGID_SVGID_45_14" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -50 -50)" x1="0" y1="50" x2="100" y2="50">
@@ -27,7 +27,7 @@
           <stop offset="32.74%" style="stop-color:rgb(243,235,235);stop-opacity: 1"/>
           <stop offset="90.603%" style="stop-color:rgb(255,255,0);stop-opacity: 1"/>
         </linearGradient>
-        <polygon style="stroke: rgb(0,0,0); stroke-width: 3; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: url(#SVGID_SVGID_45_14); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke" points="-50,-50 -50,50 50,50 50,-50 "/>
+        <polygon style="stroke: rgb(0,0,0); stroke-width: 2; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: url(#SVGID_SVGID_45_14); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke" points="-50,-50 -50,50 50,50 50,-50 "/>
       </g>
     </g>
   </g>
