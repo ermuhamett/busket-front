@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bucket Manager</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/style.css" defer>
+    <link rel="stylesheet" href="./kendo/kendo.common.min.css" defer>
+    
     <!-- Подключить KendoUI js -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="./scripts/script.js"></script>
+    <script src="./kendo/jquery.min.js"></script>
+    <script src="./kendo/kendo.all.min.js"></script>
+    <script type="module" src="./scripts/kendo.js"></script>
 </head>
 <body>
     <h1>Bucket Manager</h1>
-    <div class="bucket-grid-container">
-        <div class="bucket-grid" id="bucket-grid-1"></div>
-        <div class="bucket-grid" id="bucket-grid-2"></div>
-    </div>
+    <div id="slag-field"></div> <!-- Добавляем этот элемент -->
+    <button id="cooling-time-button">Set Cooling Time</button>
     <button id="overlay-spanner">Overlay Spanner</button>
 </body>
 </html>
