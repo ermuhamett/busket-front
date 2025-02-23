@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bucket Manager</title>
-    <link rel="stylesheet" href="./styles/style.css" defer>
-    <link rel="stylesheet" href="./kendo/kendo.common.min.css" defer>
-    
-    <!-- Подключить KendoUI js -->
-    <script src="./kendo/jquery.min.js"></script>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      href="https://kendo.cdn.telerik.com/themes/10.2.0/bootstrap/bootstrap-main.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./kendo/jszip.min.js"></script>
     <script src="./kendo/kendo.all.min.js"></script>
     <script type="module" src="./scripts/kendo.js"></script>
-</head>
-<body>
-    <h1>Bucket Manager</h1>
-    <div id="slag-field"></div> <!-- Добавляем этот элемент -->
+  </head>
+  <body>
+    <h1>Шлаковое поле</h1>
+    <div id="slag-field"></div>
+    <!-- Добавляем этот элемент -->
     <button id="cooling-time-button">Set Cooling Time</button>
     <button id="overlay-spanner">Overlay Spanner</button>
-</body>
+  </body>
 </html>

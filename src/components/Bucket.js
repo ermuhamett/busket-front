@@ -1,45 +1,20 @@
-export class Bucket {
-    constructor(id, status = 'empty', coolingTime = 0) {
-        this.id = id;
-        this.status = status;
-        this.coolingTime = coolingTime;
-        this.installationTime = null;
-        this.element = this.createElement();
-    }
+// src/components/Bucket.js
 
-    createElement() {
-        let bucketElement = $('<div>').addClass('bucket').attr('data-id', this.id);
-        this.updateSVG(bucketElement);
-        return bucketElement;
-    }
+export default function Bucket(id) {
+  const $container = $('<div>')
+    .addClass('bucket-container')
+    .attr('data-id', id);
 
-    updateSVG(bucketElement) {
-        const svgPath = `./svg/${this.status}_bucket.svg`;
-        $.get(svgPath, (data) => {
-            if (bucketElement) {
-                bucketElement.html(data);
-                bucketElement.append(`<div class="bucket-id">${this.id}</div>`);
-            }
-        });
-    }
+  const $bucket = $('<div>').addClass('bucket');
+  const $svgContainer = $('<div>').addClass('bucket-svg'); // SVG будет через CSS
+  const $label = $('<div>').addClass('bucket-id').text(id);
 
-    updateStatus(newStatus) {
-        this.status = newStatus;
-        this.updateSVG(this.element);
-    }
+  $container.append($svgContainer, $label);
 
-    setCoolingTime(hours) {
-        this.coolingTime = hours;
-        this.installationTime = new Date();
-        this.updateStatus('full');
-        this.startCoolingTimer();
-    }
+  $container.on('click', function () {
+    $(this).toggleClass('active');
+    kendo.alert(`Ковш ${id} выбран`);
+  });
 
-    startCoolingTimer() {
-        if (this.coolingTime > 0) {
-            setTimeout(() => {
-                this.updateStatus('empty');
-            }, this.coolingTime * 60 * 60 * 1000); // Convert hours to milliseconds
-        }
-    }
+  return $container[0]; // jQuery возвращает объект, а нам нужен обычный DOM-элемент
 }

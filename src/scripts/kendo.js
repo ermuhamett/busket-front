@@ -1,24 +1,14 @@
-import { SlagField } from '../components/SlagField.js';
+// src/scripts/kendo.js
 
-$(document).ready(() => {
-    if ($('#slag-field').length) {
-        const slagField = new SlagField(5, 8);
-        $('#slag-field').append(slagField.element);
+import SlagField from '../components/SlagField.js';
 
-        $('#cooling-time-button').kendoButton({
-            click: () => {
-                let coolingTime = prompt('Enter cooling time in hours:');
-                if (coolingTime) {
-                    slagField.cells.forEach(cell => {
-                        if (cell.bucket.status === 'full') {
-                            cell.bucket.setCoolingTime(parseInt(coolingTime));
-                        }
-                    });
-                    alert(`Cooling time set to ${coolingTime} hours for all full buckets.`);
-                }
-            }
-        });
-    } else {
-        console.error("Element #slag-field не найден!");
-    }
+$(document).ready(function () {
+  $('#control-panel').kendoPanelBar();
+
+  new SlagField('slag-field');
+
+  $('.bucket').on('click', function () {
+    const id = $(this).attr('data-id');
+    kendo.alert(`Ковш ${id} выбран`);
+  });
 });

@@ -1,75 +1,77 @@
 .bucket-grid-container {
-    width: 1300px; /* Ограничиваем ширину контейнера */
-    margin: 0 auto; /* Центрируем контейнер */
-    overflow: auto; /* Добавляем прокрутку, если содержимое превышает ширину контейнера */
+  width: 1300px; /* Ограничиваем ширину контейнера */
+  margin: 0 auto; /* Центрируем контейнер */
+  overflow: auto; /* Добавляем прокрутку, если содержимое превышает ширину контейнера */
 }
 
 .bucket-grid {
-    display: grid;
-    grid-template-columns: repeat(20, 50px); /* 20 columns, each 50px wide */
-    grid-gap: 5px; /* Убираем промежутки между ковшами */
-    justify-items: center;
-    align-items: center;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(20, 50px); /* 20 columns, each 50px wide */
+  grid-gap: 5px; /* Убираем промежутки между ковшами */
+  justify-items: center;
+  align-items: center;
+  padding: 20px;
 }
 
 .bucket-container {
-    /* Размещаем подпись и спаннер внутри */
-    position: relative;
-    text-align: center;
-    width: 50px; 
-    height: 70px; /* чуть больше, чтобы влезла подпись */
+  /* Размещаем подпись и спаннер внутри */
+  position: relative;
+  text-align: center;
+  width: 50px;
+  height: 70px; /* чуть больше, чтобы влезла подпись */
 }
 
 /* Место для ковша */
 .bucket-svg {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
+  background-image: url('../svg/empty_bucket.svg'); /* Путь к SVG */
+  background-size: cover;
 }
 
 /* Размер самого ковша (SVG) */
 .bucket {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
 }
 
 /* При клике — визуальное выделение (обводка) */
 .bucket.active {
-    outline: 2px solid red;
-    outline-offset: -2px; /* чтобы обводка вплотную к краю */
+  outline: 2px solid red;
+  outline-offset: -2px; /* чтобы обводка вплотную к краю */
 }
 
 /* Подпись (номер ковша) — делаем более жирной */
 .bucket-id {
-    margin-top: 5px;
-    font-size: 12px;
-    font-weight: bold; /* жирный шрифт */
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: bold; /* жирный шрифт */
 }
 
 /* Спаннер накладываем в пределах контейнера */
 .spanner-overlay {
-    position: absolute;
-    z-index: 10;
-    pointer-events: none; /* чтобы клики проходили к ковшу */
-    
-    /* Зададим размер, чтобы он не выходил за границы ковша */
-    width: 33px;
-    height: 33px;
-    
-    /* Центрируем внутри 50×50 ковша */
-    top: calc(50% - 20px);
-    left: calc(50% - 16px);
+  position: absolute;
+  z-index: 10;
+  pointer-events: none; /* чтобы клики проходили к ковшу */
+
+  /* Зададим размер, чтобы он не выходил за границы ковша */
+  width: 33px;
+  height: 33px;
+
+  /* Центрируем внутри 50×50 ковша */
+  top: calc(50% - 20px);
+  left: calc(50% - 16px);
 }
 
 /* Подсветка контейнера при наложенном спаннере */
 .bucket-container.overlayed .bucket-svg {
-    opacity: 0.5; /* Прозрачность ковша */
+  opacity: 0.5; /* Прозрачность ковша */
 }
 
 /* Стили для кнопок */
 button {
-    padding: 10px;
-    font-size: 14px;
-    margin-top: 20px;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 20px;
 }

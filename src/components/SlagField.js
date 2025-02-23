@@ -1,24 +1,25 @@
-import { Cell } from './Cell.js';
+import Bucket from './Bucket.js';
 
-export class SlagField {
-    constructor(rows, columns) {
-        this.rows = rows;
-        this.columns = columns;
-        this.cells = [];
-        this.element = this.createElement();
+export default function SlagField(containerId) {
+  const $container = window.$('#' + containerId).empty(); // Очищаем контейнер перед генерацией
+  const rows = 4,
+    cols = 20; // Количество рядов и столбцов
+
+  const $bucketGrid = $('<div>').addClass('bucket-grid-container');
+
+  for (let row = 0; row < rows; row++) {
+    const $rowContainer = $('<div>').addClass('bucket-grid mb-4'); // mb-4 - Bootstrap отступ
+
+    for (let col = 0; col < cols; col++) {
+      const bucketNumber = (row + 1) * 100 + (col + 1); // 101-120, 201-220 и т.д.
+
+      // Генерируем ковш через Bucket.js
+      const bucketElement = Bucket(bucketNumber);
+      $rowContainer.append(bucketElement);
     }
 
-    createElement() {
-        let fieldElement = $('<div>').addClass('slag-field');
-        for (let i = 0; i < this.rows; i++) {
-            let rowElement = $('<div>').addClass('row');
-            for (let j = 0; j < this.columns; j++) {
-                let cell = new Cell(`${i}-${j}`);
-                this.cells.push(cell);
-                rowElement.append(cell.element);
-            }
-            fieldElement.append(rowElement);
-        }
-        return fieldElement;
-    }
+    $bucketGrid.append($rowContainer);
+  }
+
+  $container.append($bucketGrid);
 }
