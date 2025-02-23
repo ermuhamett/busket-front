@@ -5,11 +5,10 @@ export default function Bucket(id) {
     .addClass('bucket-container')
     .attr('data-id', id);
 
-  const $bucket = $('<div>').addClass('bucket');
-  const $svgContainer = $('<div>').addClass('bucket-svg'); // SVG будет через CSS
+  const $bucket = $('<div>').addClass('bucket-svg'); // SVG будет через CSS
   const $label = $('<div>').addClass('bucket-id').text(id);
 
-  $container.append($svgContainer, $label);
+  $container.append($bucket, $label);
 
   $container.on('click', function () {
     $(this).toggleClass('active');

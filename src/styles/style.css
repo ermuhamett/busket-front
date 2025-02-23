@@ -75,3 +75,25 @@ button {
   font-size: 14px;
   margin-top: 20px;
 }
+
+/*ContextMenu styles*/
+#bucketMenu {
+  width: auto !important;
+  min-width: 200px;
+}
+
+.k-context-menu {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.k-context-menu li {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.k-context-menu li:hover {
+  background: #f0f0f0;
+}
