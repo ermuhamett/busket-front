@@ -1,54 +1,48 @@
+import StateSubMenu from './StateSubMenu.js'; // Импортируем подменю
+
 export default function ContextMenu(onStateChange) {
-  const $menu = $('<ul>', { id: 'bucketMenu' }).append(
-    $('<li>')
-      .text('Состояние')
-      .append(
-        $('<ul>')
-          .append($('<li>', { id: 'no-bucket', text: 'Нет ковша' }))
-          .append($('<li>', { id: 'empty-bucket', text: 'Пустой ковш' }))
-          .append($('<li>', { id: 'slag-bucket', text: 'Ковш со шлаком' }))
-      ),
-    $('<li>')
-      .text('Используется')
-      .append(
-        $('<ul>')
-          .append($('<li>', { id: 'used-yes', text: 'Да' }))
-          .append($('<li>', { id: 'used-no', text: 'Нет' }))
-      ),
-    $('<li>', { id: 'select-all', text: 'Выделить все' })
-  );
+    // Главное меню (первый уровень)
+    const $contextMenu = $('<ul>', { id: 'bucketMenu' }).append(
+        $('<li>', { id: 'state-menu', text: 'Состояние' }),
+        $('<li>', { id: 'used-menu', text: 'Используется' }),
+        $('<li>', { id: 'select-all', text: 'Выделить все' })
+    );
 
-  $('body').append($menu);
+    // Добавляем главное меню на страницу
+    $('body').append($contextMenu);
 
-  $menu.kendoContextMenu({
-    target: '.bucket-container',
-    filter: '.bucket-container',
-    orientation: 'vertical', // Стандартная вертикальная ориентация
-    animation: {
-      open: { effects: 'fadeIn' }, // Анимация появления
-    },
-    select: function (e) {
-      const item = $(e.item);
-      const bucketId = $('#bucketMenu').data('bucket-id');
+    $contextMenu.kendoContextMenu({
+        target: '.bucket-container',
+        filter: '.bucket-container',
+        orientation: 'vertical',
+        animation: {
+            open: { effects: 'fadeIn' },
+        },
+        select: function (e) {
+            const item = $(e.item);
+            const bucketId = $('#bucketMenu').data('bucket-id');
 
-      if (item.attr('id') === 'no-bucket') {
-        onStateChange(bucketId, 'no-bucket');
-      } else if (item.attr('id') === 'empty-bucket') {
-        onStateChange(bucketId, 'empty-bucket');
-      } else if (item.attr('id') === 'slag-bucket') {
-        onStateChange(bucketId, 'slag-bucket');
-      } else if (item.attr('id') === 'used-yes') {
-        console.log(`Ковш ${bucketId} помечен как используемый.`);
-      } else if (item.attr('id') === 'used-no') {
-        console.log(`Ковш ${bucketId} помечен как неиспользуемый.`);
-      }
-    },
-  });
+            if (item.attr('id') === 'state-menu') {
+                // Удаляем предыдущее подменю (если оно существует)
+                $('#state-submenu').remove();
 
-  $(document).on('contextmenu', '.bucket-container', function (event) {
-    event.preventDefault();
-    const bucketId = $(this).data('id');
-    $('#bucketMenu').data('bucket-id', bucketId);
-    $menu.data('kendoContextMenu').open(event.pageX, event.pageY);
-  });
+                // Открываем подменю рядом с основным
+                const menuPosition = $contextMenu.offset();
+                const menuWidth = $contextMenu.width();
+                StateSubMenu(bucketId, onStateChange, menuPosition.left + menuWidth + 10, menuPosition.top);
+            } else if (item.attr('id') === 'used-menu') {
+                console.log(`Ковш ${bucketId} используется.`);
+            } else if (item.attr('id') === 'select-all') {
+                console.log('Выделить все');
+            }
+        },
+    });
+
+    // Обрабатываем правый клик на ковше
+    $(document).on('contextmenu', '.bucket-container', function (event) {
+        event.preventDefault();
+        const bucketId = $(this).data('id');
+        $('#bucketMenu').data('bucket-id', bucketId);
+        $contextMenu.data('kendoContextMenu').open(event.pageX, event.pageY);
+    });
 }

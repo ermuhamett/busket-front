@@ -77,23 +77,25 @@ button {
 }
 
 /*ContextMenu styles*/
-#bucketMenu {
-  width: auto !important;
-  min-width: 200px;
-}
 
-.k-context-menu {
-  background: #ffffff;
+/* Основное контекстное меню */
+#bucketMenu, #state-submenu {
+  list-style-type: none;
+  background-color: #fff;
   border: 1px solid #ccc;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  padding: 5px 10px;
+  width: 150px;
 }
 
-.k-context-menu li {
+/* Элементы контекстного меню */
+#bucketMenu li, #state-submenu li {
   padding: 8px 12px;
   cursor: pointer;
-  font-size: 14px;
 }
 
-.k-context-menu li:hover {
-  background: #f0f0f0;
+/* При наведении */
+#bucketMenu li:hover, #state-submenu li:hover {
+  background-color: #f0f0f0;
 }
+
