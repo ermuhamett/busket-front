@@ -19,15 +19,25 @@ $(document).ready(function () {
     $bucket.removeClass('empty no-bucket slag');
 
     if (state === 'slag-bucket') {
-      cooldownDialog.open(id);
+      $bucket.addClass('red-bucket');
     } else if (state === 'no-bucket') {
       $bucket.addClass('no-bucket');
     } else {
       $bucket.addClass('empty');
     }
-  });
 
-  /*new SlagField('slag-field');*/
+    // Также обновим состояние через updateState
+    const bucketElement = $(`.bucket-container[data-id='${id}']`).data(
+      'bucket'
+    );
+    if (bucketElement && typeof bucketElement.updateState === 'function') {
+      bucketElement.updateState(state);
+    } else {
+      console.error(
+        `Ковш с id ${id} не найден или метод updateState не существует`
+      );
+    }
+  });
 
   $('.bucket').on('click', function () {
     const id = $(this).attr('data-id');

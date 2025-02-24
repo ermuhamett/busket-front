@@ -15,7 +15,10 @@ export default function SlagField(containerId) {
 
       // Генерируем ковш через Bucket.js
       const bucketElement = Bucket(bucketNumber);
-      $rowContainer.append(bucketElement);
+
+      $rowContainer.append(bucketElement.element);
+      // Сохраняем bucketElement в данных jQuery для дальнейшего использования
+      $(bucketElement.element).data('bucket', bucketElement);
     }
 
     $bucketGrid.append($rowContainer);
