@@ -30,6 +30,29 @@ export default function StateSubMenu(bucketId, onStateChange, posX, posY) {
         }
 
         // Закрываем подменю после выбора
+        closeSubMenu();
+    });
+
+    // Функция закрытия подменю
+    function closeSubMenu() {
         $stateSubMenu.remove();
+        $(document).off('click.submenu'); // Отключаем обработчик кликов вне подменю
+        $(document).off('keydown.submenu'); // Отключаем обработчик клавиши Esc
+    }
+
+    // Закрываем подменю, если клик происходит вне его области
+    setTimeout(() => {
+        $(document).on('click.submenu', function (e) {
+            if (!$(e.target).closest('#state-submenu').length) {
+                closeSubMenu();
+            }
+        });
+    }, 0);
+
+    // Закрытие подменю при нажатии клавиши Esc
+    $(document).on('keydown.submenu', function (e) {
+        if (e.key === 'Escape') {
+            closeSubMenu();
+        }
     });
 }
